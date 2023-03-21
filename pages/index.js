@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Hero from "@/components/home/Hero";
 import Header from "@/components/home/Header";
+import Footer from "@/components/home/Footer";
 import Missions from "@/components/home/Missions";
+import CTA from "@/components/home/CTA";
 import ComboBox from "@/components/common/ComboBox";
 import QuickView from "@/components/common/QuickView";
 import CapsulesList from "@/components/common/CapsulesList";
@@ -117,10 +119,15 @@ export default function Home({ capsules }) {
           />
         </div>
 
+        {/* CTA section */}
+        <CTA />
+
         {/* Data Grid / Capsules Grid section */}
         <div className="bg-gradient-to-br from-gray-800 via-gray-600 to-gray-900 py-10">
           <CapsulesList capsules={capsules} />
         </div>
+
+        <Footer />
       </main>
       <QuickView />
     </>
