@@ -1,37 +1,50 @@
 import { useState } from "react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import { Combobox } from "@headlessui/react";
-
-const people = [
-  { id: 1, name: "Leslie Alexander" },
-  // More users...
-];
+import { ArrowPathIcon } from "@heroicons/react/24/outline";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ComboBox() {
+export default function ComboBox({
+  myFunction,
+  allData,
+  label,
+  selectedData,
+  setSelectedData,
+}) {
   const [query, setQuery] = useState("");
-  const [selectedData, setSelectedData] = useState(null);
 
-  const filteredPeople =
+  const filteredData =
     query === ""
-      ? people
-      : people.filter((data) => {
-          return data.name.toLowerCase().includes(query.toLowerCase());
+      ? allData
+      : allData.filter((data) => {
+          return data?.toLowerCase().includes(query.toLowerCase());
         });
 
   return (
     <Combobox as="div" value={selectedData} onChange={setSelectedData}>
-      <Combobox.Label className="block text-sm font-medium leading-6 text-gray-900">
-        Assigned to
-      </Combobox.Label>
+      <div className="flex gap-2 justify-between">
+        <Combobox.Label className="block text-base font-medium leading-6 text-white">
+          {label}
+        </Combobox.Label>
+        {selectedData && (
+          <button
+            type="button"
+            onClick={() => setSelectedData(null)}
+            title="Clear selection"
+            className="text-sm"
+          >
+            <ArrowPathIcon className="h-4 w-4 mr-2 hover:animate-spin text-white" />
+          </button>
+        )}
+      </div>
       <div className="relative mt-2">
         <Combobox.Input
           className="w-full rounded-md border-0 bg-white py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
           onChange={(event) => setQuery(event.target.value)}
-          displayValue={(data) => data?.name}
+          placeholder="All"
         />
         <Combobox.Button className="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
           <ChevronUpDownIcon
@@ -40,12 +53,12 @@ export default function ComboBox() {
           />
         </Combobox.Button>
 
-        {filteredPeople.length > 0 && (
+        {filteredData.length > 0 && (
           <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-            {filteredPeople.map((data) => (
+            {filteredData.map((data, index) => (
               <Combobox.Option
-                key={data.id}
-                value={data}
+                key={index}
+                value={myFunction(data)}
                 className={({ active }) =>
                   classNames(
                     "relative cursor-default select-none py-2 pl-3 pr-9",
@@ -61,7 +74,7 @@ export default function ComboBox() {
                         selected && "font-semibold"
                       )}
                     >
-                      {data.name}
+                      {myFunction(data)}
                     </span>
 
                     {selected && (
