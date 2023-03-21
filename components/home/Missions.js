@@ -71,14 +71,14 @@ export default function Missions() {
                 the fueling process before a static fire test was set to occur.
               </p>
               <div className="mt-10 flex items-center gap-x-6">
-                <button
-                  type="button"
+                <a
+                  href="https://www.spacex.com/launches/"
                   className="bg-transparent py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm ring-2 ring-inset ring-white hover:bg-gray-50 hover:text-gray-900"
                 >
                   ALL LAUNCHES
-                </button>
+                </a>
                 <a
-                  href="#"
+                  href="https://www.spacex.com/mission/"
                   className="text-sm font-semibold leading-6 text-white"
                 >
                   LEARN MORE <span aria-hidden="true">→</span>

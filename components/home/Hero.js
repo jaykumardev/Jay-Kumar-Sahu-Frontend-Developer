@@ -42,13 +42,16 @@ export default function Hero() {
           </h1>
 
           <div className="mt-10 flex items-center gap-x-6">
-            <button
-              type="button"
+            <a
+              href="https://www.spacex.com/launches/mission/?missionId=SES-18-SES-19-pl"
               className="bg-transparent py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm ring-2 ring-inset ring-white hover:bg-gray-50 hover:text-gray-900"
             >
               REWATCH
-            </button>
-            <a href="#" className="text-sm font-semibold leading-6 text-white">
+            </a>
+            <a
+              href="https://www.spacex.com/mission/"
+              className="text-sm font-semibold leading-6 text-white"
+            >
               LEARN MORE <span aria-hidden="true">→</span>
             </a>
           </div>
