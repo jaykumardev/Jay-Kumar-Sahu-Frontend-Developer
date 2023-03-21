@@ -5,7 +5,6 @@ import Footer from "@/components/home/Footer";
 import Missions from "@/components/home/Missions";
 import CTA from "@/components/home/CTA";
 import ComboBox from "@/components/common/ComboBox";
-import QuickView from "@/components/common/QuickView";
 import CapsulesList from "@/components/common/CapsulesList";
 import { useState } from "react";
 import { DateTime } from "luxon";
@@ -129,7 +128,6 @@ export default function Home({ capsules }) {
 
         <Footer />
       </main>
-      <QuickView />
     </>
   );
 }
