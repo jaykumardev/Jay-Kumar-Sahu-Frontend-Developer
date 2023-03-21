@@ -59,32 +59,37 @@ export default function Home({ capsules }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="">
+      <main>
         <Header />
+
+        {/* Banner section */}
         <Hero />
+
+        {/* Missions section */}
         <Missions />
-        {/* Search Form */}
+
+        {/* Search Form / Capsules section */}
         <div className="bg-gray-900 py-10 space-y-5 px-6 lg:px-8">
           {/* Search ComboBoxes */}
           <div className="justify-center sm:flex space-y-5 sm:space-y-0 gap-5">
             <ComboBox
               myFunction={formatDate}
               allData={originalLaunches}
-              label="Original Launch"
+              label="ORIGINAL LAUNCH"
               selectedData={selectedOriginalLaunch}
               setSelectedData={setSelectedOriginalLaunch}
             />
             <ComboBox
               myFunction={capitalizeFirstLowercaseRest}
               allData={statuses}
-              label="Status"
+              label="STATUS"
               selectedData={selectedStatus}
               setSelectedData={setSelectedStatus}
             />
             <ComboBox
               myFunction={dummyFunction}
               allData={types}
-              label="Type"
+              label="TYPE"
               selectedData={selectedType}
               setSelectedData={setSelectedType}
             />
@@ -101,7 +106,7 @@ export default function Home({ capsules }) {
                 className="-ml-0.5 mr-2 h-5 w-5"
                 aria-hidden="true"
               />
-              Search Capsules
+              SEARCH CAPSULES
             </button>
           </div>
 
@@ -111,11 +116,13 @@ export default function Home({ capsules }) {
             label="Oops! Nothing found. Try changing your selection."
           />
         </div>
-        <QuickView />
+
+        {/* Data Grid / Capsules Grid section */}
         <div className="bg-gradient-to-br from-gray-800 via-gray-600 to-gray-900 py-10">
           <CapsulesList capsules={capsules} />
         </div>
       </main>
+      <QuickView />
     </>
   );
 }
